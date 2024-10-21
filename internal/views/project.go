@@ -20,3 +20,19 @@ func ListProjects(w http.ResponseWriter, r *http.Request) {
 
 	template.Execute(w, projects)
 }
+
+func ProjectDetail(w http.ResponseWriter, r *http.Request) {
+	key := r.PathValue("key")
+
+	template, err := template.ParseFiles("web/templates/project.html")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	project, err := db.GetProjectByKey(key)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	template.Execute(w, project)
+}

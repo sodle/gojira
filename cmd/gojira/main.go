@@ -13,5 +13,6 @@ func main() {
 	defer db.Close()
 
 	http.HandleFunc("/", views.ListProjects)
+	http.HandleFunc("/{key}", views.ProjectDetail)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
