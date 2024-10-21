@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS issue(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    project_key VARCHAR,
+    title VARCHAR,
+    description VARCHAR
+)
