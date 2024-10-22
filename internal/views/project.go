@@ -34,5 +34,10 @@ func ProjectDetail(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 
+	project.Issues, err = db.ListIssuesForProject(key)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
 	template.Execute(w, project)
 }

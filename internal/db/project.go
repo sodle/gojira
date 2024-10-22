@@ -3,8 +3,9 @@ package db
 import "database/sql"
 
 type Project struct {
-	Key   string
-	Title string
+	Key    string
+	Title  string
+	Issues []Issue
 }
 
 func CreateProject(key string, title string) (*Project, error) {
